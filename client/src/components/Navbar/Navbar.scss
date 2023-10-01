@@ -1,0 +1,30 @@
+.navbar {
+    @apply h-20;
+    .wrapper {
+        @apply py-[10px] px-[30px] flex justify-between items-center;
+        .item {
+            @apply flex items-center text-lg;
+        }
+        .left {
+            @apply flex items-center gap-[25px];
+            .flag {
+                @apply w-[20px] h-[20px];
+            }
+        }
+        .center {
+            @apply text-3xl;
+        }
+        .right {
+            @apply flex items-center gap-[25px];
+            .icons {
+                @apply flex gap-[15px] cursor-pointer text-[#777];
+                .cartIcon {
+                    @apply relative;
+                    span {
+                        @apply text-xs w-5 h-5 rounded-full bg-[#2879fe] text-white -right-[10px] -top-[10px] absolute flex justify-center items-center;
+                    }
+                }
+            }
+        }
+    }
+}

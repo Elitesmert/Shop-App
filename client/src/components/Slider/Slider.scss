@@ -1,0 +1,18 @@
+.slider {
+    @apply w-full h-[calc(100vh-80px)] relative overflow-hidden;
+    .imageContainer {
+        @apply w-[300vw] h-full flex transition-all duration-500 ease-in-out;
+        img {
+            @apply w-screen h-full object-cover;
+        }
+    }
+    .icons {
+        @apply absolute flex mx-auto max-w-fit left-0 right-0 gap-[10px] bottom-[100px];
+        .icon {
+            @apply w-[50px] h-[50px] border border-gray-500 rounded-md flex justify-center items-center transition-colors duration-300;
+            &:hover {
+                @apply border-transparent bg-gray-500 text-white cursor-pointer;
+            }
+        }
+    }
+}

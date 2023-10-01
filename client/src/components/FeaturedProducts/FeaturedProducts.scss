@@ -1,0 +1,15 @@
+.featuredProducts {
+    @apply mx-[200px] my-[100px];
+    .top {
+        @apply flex justify-between items-center;
+        h1 {
+            @apply flex-[2] text-3xl font-bold capitalize;
+        }
+        p {
+            @apply flex-[3] text-sm text-gray-500;
+        }
+    }
+    .bottom {
+        @apply flex justify-center gap-[50px] mt-[50px];
+    }
+}

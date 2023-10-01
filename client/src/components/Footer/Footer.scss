@@ -1,0 +1,36 @@
+.footer {
+    margin: 100px 200px 20px 200px;
+
+    .top {
+        @apply flex gap-[50px];
+
+        .item {
+            @apply flex flex-1 flex-col gap-[10px] text-justify text-sm;
+            h1 {
+                @apply text-lg font-medium text-[#555];
+            }
+            span {
+                @apply text-gray-500;
+            }
+        }
+    }
+
+    .bottom {
+        @apply flex justify-between items-center mt-[50px];
+        .left {
+            @apply flex items-center;
+            .logo {
+                @apply text-[#2879fe] font-bold text-2xl;
+            }
+
+            .copyright {
+                @apply ml-5 text-xs text-gray-500;
+            }
+        }
+        .right {
+            img {
+                @apply h-[50px];
+            }
+        }
+    }
+}

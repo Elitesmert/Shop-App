@@ -1,0 +1,22 @@
+.categories {
+    @apply flex gap-[10px] h-[80vh] m-[10px];
+    .col {
+        @apply flex flex-1 flex-col gap-[10px];
+    }
+    .col-l {
+        @apply flex-[2];
+    }
+    .row {
+        @apply flex flex-1 gap-[10px] relative overflow-hidden;
+
+        button {
+            @apply absolute min-w-[100px] w-fit h-[50px] p-[10px] inset-0 m-auto cursor-pointer border-none bg-white uppercase font-medium rounded-md transition-colors duration-300;
+            &:hover {
+                @apply bg-[#2879fe] text-white;
+            }
+        }
+        img {
+            @apply w-full h-full object-cover;
+        }
+    }
+}

@@ -1,0 +1,21 @@
+.contact {
+    @apply bg-[#2879fe] text-white p-[15px] flex justify-center;
+    .wrapper {
+        @apply w-2/4 flex justify-between items-center;
+        > span {
+            @apply font-medium;
+        }
+        input {
+            @apply p-[10px] border-none rounded-s-[5px] text-black;
+            &:focus {
+                @apply outline-none;
+            }
+        }
+        button {
+            @apply p-[10px] border-none rounded-e-[5px] bg-[#333] text-white;
+        }
+        .icons {
+            @apply flex gap-[10px];
+        }
+    }
+}

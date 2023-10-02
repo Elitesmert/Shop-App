@@ -1,0 +1,25 @@
+.products {
+    @apply flex py-[30px] px-[50px];
+
+    .left {
+        @apply flex-1 sticky top-[50px] h-full;
+        .filterItem {
+            @apply mb-[30px];
+            h2 {
+                @apply mb-5;
+            }
+            .inputItem {
+                @apply mb-[10px];
+                label {
+                    @apply ml-[10px];
+                }
+            }
+        }
+    }
+    .right {
+        @apply flex-[3];
+        .catImg {
+            @apply w-full h-[300px] object-cover mb-[50px];
+        }
+    }
+}

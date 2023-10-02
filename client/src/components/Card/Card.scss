@@ -1,6 +1,8 @@
 .card {
     @apply w-[280px] flex flex-col gap-[10px];
-
+    &:hover span{
+        @apply shadow-md shadow-teal-600;
+    }
     .image {
         @apply w-full h-[400px] overflow-hidden relative;
         &:hover {
@@ -9,7 +11,7 @@
             }
         }
         span {
-            @apply absolute top-[5px] left-[5px] bg-white text-teal-600 flex justify-center items-center z-40 py-[3px] px-[5px] rounded-md font-medium text-xs;
+            @apply absolute top-[5px] left-[5px] bg-white text-teal-600 flex justify-center items-center z-40 py-[3px] px-[5px] rounded-md font-medium text-xs transition-all duration-300;
         }
         img {
             @apply w-full h-full object-cover absolute;

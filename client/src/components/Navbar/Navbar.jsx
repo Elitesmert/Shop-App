@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import SearchIcon from '@mui/icons-material/Search'
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined'
@@ -7,8 +7,10 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
 import {Link} from 'react-router-dom'
 import {CircleFlag} from 'react-circle-flags'
 import './Navbar.scss'
+import Cart from '../Cart/Cart'
 
 const Navbar = () => {
+  const [shoppingCart, setShoppingCart] = useState(false)
   return (
     <div className='navbar'>
       <div className='wrapper'>
@@ -51,13 +53,14 @@ const Navbar = () => {
             <SearchIcon />
             <PersonOutlineOutlinedIcon />
             <FavoriteBorderOutlinedIcon />
-            <div className='cartIcon'>
+            <div className='cartIcon' onClick={() => setShoppingCart(!shoppingCart)}>
               <ShoppingCartOutlinedIcon />
               <span>0</span>
             </div>
           </div>
         </div>
       </div>
+      {shoppingCart && <Cart />}
     </div>
   )
 }

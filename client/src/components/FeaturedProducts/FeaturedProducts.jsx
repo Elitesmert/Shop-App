@@ -1,6 +1,8 @@
-import React from 'react'
-import './FeaturedProducts.scss'
+import React, {useEffect} from 'react'
+import axios from 'axios'
 import Card from '../Card/Card'
+
+import './FeaturedProducts.scss'
 
 const FeaturedProducts = ({title}) => {
   const data = [
@@ -36,6 +38,30 @@ const FeaturedProducts = ({title}) => {
       price: 12,
     },
   ]
+
+  const [products, setProducts] = React.useState([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/products`, {
+          headers: {
+            Authorization: `bearer ${import.meta.env.VITE_STRAPI_KEY}`,
+          },
+        })
+        setProducts(res.data.data) // update the state with the fetched data
+      } catch (err) {
+        if (err.response && err.response.status === 404) {
+          console.log(
+            'API endpoint not found. Please check the URL and make sure the server is running.'
+          )
+        } else {
+          console.log(err.response ? err.response.data : err.message)
+        }
+      }
+    }
+    fetchData()
+  }, [])
   return (
     <div className='featuredProducts'>
       <div className='top'>

@@ -1,0 +1,55 @@
+.product {
+    @apply py-[20px] px-[50px] flex gap-[50px];
+    .left {
+        @apply flex-1 flex gap-[20px];
+        .images {
+            @apply flex-1;
+            img {
+                @apply w-full h-[150px] object-cover cursor-pointer mb-[10px];
+            }
+        }
+        .mainImg {
+            @apply flex-[4] h-[600px];
+            img {
+                @apply w-full h-full object-cover;
+            }
+        }
+    }
+    .right {
+        @apply flex-1 flex flex-col gap-[15px] justify-between;
+        > h1 {
+            @apply text-3xl font-medium;
+        }
+        .price {
+            @apply text-3xl text-[#2879fe] font-medium;
+        }
+        p {
+            @apply text-lg font-light text-justify;
+        }
+        .quantity {
+            @apply flex items-center gap-[10px];
+            button {
+                @apply w-[50px] h-[50px] flex items-center justify-center border-none cursor-pointer bg-gray-200;
+                &:hover {
+                    @apply bg-gray-300;
+                }
+            }
+        }
+        .add {
+            @apply w-[250px] p-[10px] bg-[#2879fe] text-white flex items-center justify-center gap-[20px] rounded-sm cursor-pointer border-none font-medium;
+        }
+        .links {
+            @apply flex gap-[20px];
+            .item {
+                @apply flex items-center gap-[10px] text-[#2879fe] text-sm;
+            }
+        }
+
+        .info {
+            @apply flex flex-col  text-gray-500 text-sm;
+            span {
+                @apply py-2;
+            }
+        }
+    }
+}

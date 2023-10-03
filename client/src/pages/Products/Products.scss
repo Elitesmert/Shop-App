@@ -1,6 +1,5 @@
 .products {
     @apply flex py-[30px] px-[50px];
-
     .left {
         @apply flex-1 sticky top-[50px] h-full;
         .filterItem {

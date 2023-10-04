@@ -27,30 +27,20 @@ const Product = () => {
           <div className='left'>
             <div className='images'>
               <img
-                src={
-                  import.meta.env.VITE_PICTURE_URL + data?.attributes?.img?.data?.attributes?.url
-                }
+                src={data?.attributes?.img?.data?.attributes?.url}
                 alt=''
                 onClick={(e) => setSelectedImg('img')}
               />
               {data?.attributes?.img2?.data?.attributes?.url && (
                 <img
-                  src={
-                    import.meta.env.VITE_PICTURE_URL + data?.attributes?.img2?.data?.attributes?.url
-                  }
+                  src={data?.attributes?.img2?.data?.attributes?.url}
                   alt=''
                   onClick={(e) => setSelectedImg('img2')}
                 />
               )}
             </div>
             <div className='mainImg'>
-              <img
-                src={
-                  import.meta.env.VITE_PICTURE_URL +
-                  data?.attributes[selectedImg]?.data?.attributes?.url
-                }
-                alt=''
-              />
+              <img src={data?.attributes[selectedImg]?.data?.attributes?.url} alt='' />
             </div>
           </div>
           <div className='right'>
@@ -70,9 +60,7 @@ const Product = () => {
                     id: data?.id,
                     title: data?.attributes?.title,
                     price: data?.attributes?.price,
-                    img:
-                      import.meta.env.VITE_PICTURE_URL +
-                      data?.attributes?.img?.data?.attributes?.url,
+                    img: data?.attributes?.img?.data?.attributes?.url,
                     quantity: quantity,
                   })
                 )

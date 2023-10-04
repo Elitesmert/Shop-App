@@ -1,26 +1,26 @@
 {
-  "name": "api",
+  "name": "starpi",
   "private": true,
   "version": "0.1.0",
   "description": "A Strapi application",
   "scripts": {
-    "dev": "strapi develop",
+    "develop": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi"
   },
-  "devDependencies": {},
   "dependencies": {
-    "@strapi/strapi": "4.14.2",
-    "@strapi/plugin-users-permissions": "4.14.2",
     "@strapi/plugin-i18n": "4.14.2",
-    "better-sqlite3": "8.6.0"
+    "@strapi/plugin-users-permissions": "4.14.2",
+    "@strapi/strapi": "4.14.2",
+    "pg": "8.8.0",
+    "strapi-provider-upload-supabase": "^1.0.0"
   },
   "author": {
     "name": "A Strapi developer"
   },
   "strapi": {
-    "uuid": "9647e4fe-354f-46a1-a69d-89b9527a8567"
+    "uuid": "5e0938bd-9e9a-4bd3-ad48-bde0072da596"
   },
   "engines": {
     "node": ">=16.0.0 <=20.x.x",

@@ -5,13 +5,13 @@
         .images {
             @apply flex-1;
             img {
-                @apply w-full h-[150px] object-cover cursor-pointer mb-[10px];
+                @apply w-full h-[150px] object-contain cursor-pointer mb-[10px];
             }
         }
         .mainImg {
             @apply flex-[4] h-[600px];
             img {
-                @apply w-full h-full object-cover;
+                @apply w-full h-full object-contain;
             }
         }
     }

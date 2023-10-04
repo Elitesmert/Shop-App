@@ -6,11 +6,14 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
 import {Link} from 'react-router-dom'
 import {CircleFlag} from 'react-circle-flags'
+import {useSelector} from 'react-redux'
 import './Navbar.scss'
 import Cart from '../Cart/Cart'
 
 const Navbar = () => {
   const [shoppingCart, setShoppingCart] = useState(false)
+  const products = useSelector((state) => state.cart.products)
+
   return (
     <div className='navbar'>
       <div className='wrapper'>
@@ -55,7 +58,7 @@ const Navbar = () => {
             <FavoriteBorderOutlinedIcon />
             <div className='cartIcon' onClick={() => setShoppingCart(!shoppingCart)}>
               <ShoppingCartOutlinedIcon />
-              <span>0</span>
+              <span>{products.length}</span>
             </div>
           </div>
         </div>

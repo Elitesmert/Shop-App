@@ -1,27 +1,39 @@
 .card {
     @apply w-[280px] flex flex-col gap-[10px];
-    &:hover span{
+    &:hover span {
         @apply shadow-md shadow-teal-600;
     }
     .image {
         @apply w-full h-[400px] overflow-hidden relative;
+
+        .secondImg {
+            @apply opacity-0 transition-all duration-75;
+        }
         &:hover {
             .secondImg {
-                @apply z-20;
+                @apply opacity-100 z-20;
+            }
+            .mainImg {
+                @apply opacity-0;
+            }
+        }
+        &:hover:not(:has(.secondImg)) {
+            .mainImg {
+                @apply opacity-100;
             }
         }
         span {
             @apply absolute top-[5px] left-[5px] bg-white text-teal-600 flex justify-center items-center z-40 py-[3px] px-[5px] rounded-md font-medium text-xs transition-all duration-300;
         }
         img {
-            @apply w-full h-full object-cover absolute;
+            @apply w-full h-full object-contain absolute;
         }
         .mainImg {
-            @apply z-10;
+            @apply z-10 transition-all duration-100;
         }
     }
     h2 {
-        @apply text-lg font-medium;
+        @apply text-lg font-medium capitalize;
     }
     .prices {
         @apply flex items-center gap-5;

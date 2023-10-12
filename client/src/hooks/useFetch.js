@@ -10,7 +10,7 @@ const useFetch = (url) => {
     const fetchData = async () => {
       try {
         setLoading(true)
-        const res = await makeRequest.get(url,)
+        const res = await makeRequest.get(url)
         setData(res.data.data) // update the state with the fetched data
       } catch (err) {
         if (err.response && err.response.status === 404) {

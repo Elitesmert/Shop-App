@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom'
 import './Card.scss'
 
 const Card = ({item}) => {
-
   console.log(item)
   return (
     <div className='card'>
@@ -11,13 +10,13 @@ const Card = ({item}) => {
         <div className='image'>
           {item?.attributes.isNew && <span>New Season</span>}
           <img
-            src={item.attributes?.img?.data?.attributes?.url}
+            src={import.meta.env.VITE_PICTURE_URL + item.attributes?.img?.data?.attributes?.url}
             alt=''
             className='mainImg'
           />
           {item.attributes?.img2?.data?.attributes?.url && (
             <img
-              src={item.attributes?.img2?.data?.attributes?.url}
+              src={import.meta.env.VITE_PICTURE_URL + item.attributes?.img2?.data?.attributes?.url}
               alt=''
               className='secondImg'
             />

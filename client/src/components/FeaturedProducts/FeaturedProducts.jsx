@@ -5,7 +5,8 @@ import useFetch from '../../hooks/useFetch'
 import './FeaturedProducts.scss'
 
 const FeaturedProducts = ({title}) => {
-  const {data, loading, error} = useFetch(`/products?populate=*&[filters][type][$eq]=${title}`)
+  const {data, loading, error} = useFetch('/products')
+
   return (
     <div className='featuredProducts'>
       <div className='top'>

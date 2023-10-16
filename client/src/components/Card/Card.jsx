@@ -8,25 +8,25 @@ const Card = ({item}) => {
     <div className='card'>
       <Link to={`/product/${item?.id}`}>
         <div className='image'>
-          {item?.attributes.isNew && <span>New Season</span>}
+          {item?.is_new && <span>New Season</span>}
           <img
-            src={import.meta.env.VITE_PICTURE_URL + item.attributes?.img?.data?.attributes?.url}
+            src={`${import.meta.env.VITE_SUPABASE_URL}/storage` + item?.img?.data?.url}
             alt=''
             className='mainImg'
           />
-          {item.attributes?.img2?.data?.attributes?.url && (
+          {item?.img2?.data?.url && (
             <img
-              src={import.meta.env.VITE_PICTURE_URL + item.attributes?.img2?.data?.attributes?.url}
+              src={import.meta.env.VITE_PICTURE_URL + item?.img2?.data?.url}
               alt=''
               className='secondImg'
             />
           )}
         </div>
       </Link>
-      <h2>{item?.attributes.title}</h2>
+      <h2>{item?.title}</h2>
       <div className='prices'>
-        <h3>${item?.attributes.oldPrice || item?.attributes.price + 20}</h3>
-        <h3>${item?.attributes.price}</h3>
+        <h3>${item?.oldPrice || item?.price + 20}</h3>
+        <h3>${item?.price}</h3>
       </div>
     </div>
   )

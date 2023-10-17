@@ -5,7 +5,10 @@ import useFetch from '../../hooks/useFetch'
 import './FeaturedProducts.scss'
 
 const FeaturedProducts = ({title}) => {
-  const {data, loading, error} = useFetch('/products')
+  const {data, loading, error} = useFetch(
+    `/rest/v1/products?select=*,image(*),image2(*)&type=eq.${title}`
+  )
+  console.log(data)
 
   return (
     <div className='featuredProducts'>

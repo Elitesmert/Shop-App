@@ -12,6 +12,7 @@ export const makeRequestSupabase = axios.create({
   headers: {
     apiKey: import.meta.env.VITE_SUPABASE_KEY,
     Authorization: `bearer ${import.meta.env.VITE_SUPABASE_KEY}`,
+    acceptProfile: 'storage',
   },
 })
 export const makeRequestSupabasePicture = axios.create({
@@ -19,7 +20,7 @@ export const makeRequestSupabasePicture = axios.create({
   headers: {
     apiKey: import.meta.env.VITE_SUPABASE_KEY,
     Authorization: `bearer ${import.meta.env.VITE_SUPABASE_KEY}`,
-    AcceptProfile: 'storage',
+    acceptProfile: 'storage',
   },
 })
 // import { createClient } from '@supabase/supabase-js'

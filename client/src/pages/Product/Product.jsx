@@ -11,96 +11,87 @@ import {addToCart} from '../../redux/cartReducer'
 const Product = () => {
   const id = useParams().id
 
-  const [selectedImg, setSelectedImg] = useState('img')
+  const [selectedImg, setSelectedImg] = useState('image')
   const [quantity, setQuantity] = useState(1)
 
   const dispatch = useDispatch()
-  const {data, loading, error} = useFetch(`/products/${id}?populate=*`)
-
+  const {data, loading, error} = useFetch(
+    `/rest/v1/products?select=*,image(*),image2(*)&id=eq.${id}`
+  )
+  console.log(data)
   return (
     <div className='product'>
-      {loading ? (
-        'loading'
-      ) : (
-        <>
-          {' '}
-          <div className='left'>
-            <div className='images'>
-              <img
-                src={
-                  import.meta.env.VITE_PICTURE_URL + data?.attributes?.img?.data?.attributes?.url
-                }
-                alt=''
-                onClick={(e) => setSelectedImg('img')}
-              />
-              {data?.attributes?.img2?.data?.attributes?.url && (
-                <img
-                  src={
-                    import.meta.env.VITE_PICTURE_URL + data?.attributes?.img2?.data?.attributes?.url
+      {loading
+        ? `loading`
+        : data && (
+            <>
+              <div className='left'>
+                <div className='images'>
+                  <img
+                    src={data[0]?.image?.formats?.small.url}
+                    alt=''
+                    onClick={(e) => setSelectedImg('image')}
+                  />
+                  {data[0]?.image2 && (
+                    <img
+                      src={data[0]?.image2?.formats?.small.url}
+                      alt=''
+                      onClick={(e) => setSelectedImg('image2')}
+                    />
+                  )}
+                </div>
+                <div className='mainImg'>
+                  <img src={data[0]?.[selectedImg]?.formats?.medium.url} alt='' />
+                </div>
+              </div>
+              <div className='right'>
+                <h1>{data[0]?.title}</h1>
+                <span className='price'>${data[0]?.price}</span>
+                <p>{data[0]?.desc}</p>
+                <div className='quantity'>
+                  <button onClick={() => setQuantity((prev) => (prev === 1 ? 1 : prev - 1))}>
+                    -
+                  </button>
+                  {quantity}
+                  <button onClick={() => setQuantity((prev) => prev + 1)}>+</button>
+                </div>
+                <button
+                  className='add'
+                  onClick={() =>
+                    dispatch(
+                      addToCart({
+                        id: data[0]?.id,
+                        title: data[0]?.title,
+                        price: data[0]?.price,
+                        img: data[0]?.[selectedImg]?.formats?.thumbnail.url,
+                        quantity: quantity,
+                      })
+                    )
                   }
-                  alt=''
-                  onClick={(e) => setSelectedImg('img2')}
-                />
-              )}
-            </div>
-            <div className='mainImg'>
-              <img
-                src={
-                  import.meta.env.VITE_PICTURE_URL +
-                  data?.attributes[selectedImg]?.data?.attributes?.url
-                }
-                alt=''
-              />
-            </div>
-          </div>
-          <div className='right'>
-            <h1>{data?.attributes?.title}</h1>
-            <span className='price'>${data?.attributes?.price}</span>
-            <p>{data?.attributes?.desc}</p>
-            <div className='quantity'>
-              <button onClick={() => setQuantity((prev) => (prev === 1 ? 1 : prev - 1))}>-</button>
-              {quantity}
-              <button onClick={() => setQuantity((prev) => prev + 1)}>+</button>
-            </div>
-            <button
-              className='add'
-              onClick={() =>
-                dispatch(
-                  addToCart({
-                    id: data?.id,
-                    title: data?.attributes?.title,
-                    price: data?.attributes?.price,
-                    img:
-                      import.meta.env.VITE_PICTURE_URL +
-                      data?.attributes?.img?.data?.attributes?.url,
-                    quantity: quantity,
-                  })
-                )
-              }
-            >
-              <AddShoppingCartIcon /> ADD TO CART
-            </button>
-            <div className='links'>
-              <div className='item'>
-                <FavoriteBorderIcon /> ADD TO WISH LIST
+                >
+                  <AddShoppingCartIcon /> ADD TO CART
+                </button>
+                <div className='links'>
+                  <div className='item'>
+                    <FavoriteBorderIcon /> ADD TO WISH LIST
+                  </div>
+                  <div className='item'>
+                    <BalanceIcon /> ADD TO COMPARE
+                  </div>
+                </div>
+                <div className='info border-b-[3px] border-[#eeeded] pb-[15px]'>
+                  <h6>Vendor: Polo</h6>
+                  <h6>Product Type: T-Shirt</h6>
+                  <h6>Tag: T-Shirt, Women, Top</h6>
+                </div>
+                <div className='info'>
+                  <span>DESCRIPTION</span>
+                  <span className='border-y-[3px] border-[#eeeded]'>ADDITIONAL INFORMATION</span>
+                  <span>FAQ</span>
+                </div>
               </div>
-              <div className='item'>
-                <BalanceIcon /> ADD TO COMPARE
-              </div>
-            </div>
-            <div className='info border-b-[3px] border-[#eeeded] pb-[15px]'>
-              <h6>Vendor: Polo</h6>
-              <h6>Product Type: T-Shirt</h6>
-              <h6>Tag: T-Shirt, Women, Top</h6>
-            </div>
-            <div className='info'>
-              <span>DESCRIPTION</span>
-              <span className='border-y-[3px] border-[#eeeded]'>ADDITIONAL INFORMATION</span>
-              <span>FAQ</span>
-            </div>
-          </div>
-        </>
-      )}
+            </>
+          )}
     </div>
   )
 }

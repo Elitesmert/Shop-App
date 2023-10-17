@@ -3,23 +3,14 @@ import {Link} from 'react-router-dom'
 import './Card.scss'
 
 const Card = ({item}) => {
-  console.log(item)
   return (
     <div className='card'>
       <Link to={`/product/${item?.id}`}>
         <div className='image'>
           {item?.is_new && <span>New Season</span>}
-          <img
-            src={`${import.meta.env.VITE_SUPABASE_URL}/storage` + item?.img?.data?.url}
-            alt=''
-            className='mainImg'
-          />
-          {item?.img2?.data?.url && (
-            <img
-              src={import.meta.env.VITE_PICTURE_URL + item?.img2?.data?.url}
-              alt=''
-              className='secondImg'
-            />
+          <img src={item?.image?.formats?.small.url} alt='' className='mainImg' />
+          {item?.image2 && (
+            <img src={item?.image2?.formats?.small.url} alt='' className='secondImg' />
           )}
         </div>
       </Link>

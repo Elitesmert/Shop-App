@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react'
-import {makeRequest, makeRequestSupabase} from '../makeRequest'
+import {makeRequest, makeRequestSupabase, makeRequestSupabasePicture} from '../makeRequest'
 
 const useFetch = (url) => {
   const [data, setData] = useState(null)
@@ -10,7 +10,9 @@ const useFetch = (url) => {
     const fetchData = async () => {
       try {
         setLoading(true)
+        // const res2 = await makeRequestSupabasePicture.get()
         const res = await makeRequestSupabase.get(url)
+        // console.log(res2)
 
         // console.log(res.data)
         setData(res.data) // update the state with the fetched data

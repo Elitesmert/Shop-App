@@ -10,7 +10,11 @@ const Products = () => {
   const [sort, setSort] = useState('desc')
   const [maxPrice, setMaxPrice] = useState(500)
 
-  const {data, loading, error} = useFetch(`/sub-categories?[filters][categories][id][$eq]=${catId}`)
+  // const {data, loading, error} = useFetch(`/sub-categories?[filters][categories][id][$eq]=${catId}`)
+  const {data, loading, error} = useFetch(
+    `/rest/v1/sub_categories_products_links?select=*,sub_category_id(*),product_id(*)`
+  )
+  console.log(data)
 
   const handleChange = (e) => {
     const value = e.target.value
@@ -26,14 +30,21 @@ const Products = () => {
       <div className='left'>
         <div className='filterItem'>
           <h2>Product Categories</h2>
-          {data?.map((item) => (
-            <div className='inputItem' key={item.id}>
-              <input type='checkbox' id={item.id} value={item.id} onChange={handleChange} />
-              <label htmlFor={item.id} className='capitalize'>
-                {item.attributes.title}
-              </label>
-            </div>
-          ))}
+          {loading
+            ? 'loading'
+            : data?.map((item) => (
+                <div className='inputItem' key={item.sub_category_id.id}>
+                  <input
+                    type='checkbox'
+                    id={item.sub_category_id.id}
+                    value={item.sub_category_id.id}
+                    onChange={handleChange}
+                  />
+                  <label htmlFor={item.sub_category_id.id} className='capitalize'>
+                    {item.sub_category_id.title}
+                  </label>
+                </div>
+              ))}
         </div>
         <div className='filterItem'>
           <h2>Filter by price</h2>

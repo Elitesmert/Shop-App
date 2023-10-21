@@ -14,7 +14,7 @@ const Products = () => {
   const {data, loading, error} = useFetch(
     `/rest/v1/sub_categories_products_links?select=*,sub_category_id(*),product_id(*)`
   )
-  console.log(data)
+  // console.log(data)
 
   const handleChange = (e) => {
     const value = e.target.value
@@ -54,31 +54,6 @@ const Products = () => {
             <span>{maxPrice}</span>
           </div>
         </div>
-        <div className='filterItem'>
-          <h2>Sort by</h2>
-          <div className='inputItem'>
-            <input
-              type='radio'
-              id='asc'
-              value='asc'
-              name='price'
-              checked={sort === 'asc'}
-              onChange={(e) => setSort('asc')}
-            />
-            <label htmlFor='asc'>Price (Lowest first)</label>
-          </div>
-          <div className='inputItem'>
-            <input
-              type='radio'
-              id='desc'
-              value='desc'
-              name='price'
-              checked={sort === 'desc'}
-              onChange={(e) => setSort('desc')}
-            />
-            <label htmlFor='desc'>Price (Highest first)</label>
-          </div>
-        </div>
       </div>
       <div className='right'>
         <img
@@ -86,7 +61,7 @@ const Products = () => {
           src='https://images.pexels.com/photos/1074535/pexels-photo-1074535.jpeg?auto=compress&cs=tinysrgb&w=1600'
           alt=''
         />
-        <List catId={catId} maxPrice={maxPrice} sort={sort} subCats={selectedSubCats} />
+        <List catId={catId} maxPrice={maxPrice} subCats={selectedSubCats} />
       </div>
     </div>
   )

@@ -2,7 +2,7 @@ import React from 'react'
 import Card from '../../../components/Card/Card'
 import useFetch from '../../../hooks/useFetch'
 
-const List = ({subCats, catId, maxPrice}) => {
+export const List = ({subCats, catId, maxPrice}) => {
   // const {data, loading, error} = useFetch(
   //   `/products?populate=*&[filters][categories][id]=${catId}${subCats.map(
   //     (item) => `&[filters][sub_categories][id][$eq]=${item}`
@@ -28,5 +28,3 @@ const List = ({subCats, catId, maxPrice}) => {
     </div>
   )
 }
-
-export default List

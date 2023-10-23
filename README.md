@@ -1,6 +1,6 @@
 # Petbook
 
-![App Screenshot](https://asset.cloudinary.com/ddlu6plcm/786893ebffd7d021610c261b99f3adef)
+![App Screenshot](https://res.cloudinary.com/ddlu6plcm/image/upload/v1698049766/shopapp_icnzrt.png)
 
 ## Authors
 

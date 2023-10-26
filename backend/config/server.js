@@ -4,11 +4,6 @@ module.exports = ({ env }) => ({
   app: {
     keys: env.array('APP_KEYS'),
   },
-  emitErrors: false,
-  // url: env('HOST', 'https://shop-app-strapi.onrender.com'),
-  cron: {
-    enabled: env.bool('CRON_ENABLED', false),
-  },
   webhooks: {
     populateRelations: env.bool('WEBHOOKS_POPULATE_RELATIONS', false),
   },
